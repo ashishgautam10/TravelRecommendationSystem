@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>registration</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'travelapp/styles/register.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+
+<body>
+<div class="registration">
+    <div style="margin-top:100px; margin-bottom:100px;">
+        <div class="row">
+            <div class="col-lg-3"></div>
+            <div class="col-lg-6">
+                <div class="img-box">
+                    <img  class="img-box-img" src="{% static 'travelapp/images/kec.jpg' %}">
+                </div>
+                <div class="registration-box">
+                    <div class="form-box">
+                        <h1 class="sign-up-heading">CREATE ACCOUNT</h1>
+                        <form action="register" method="post">
+                            {% csrf_token %}
+                            <input type="text" name="first-name" placeholder="First Name">
+                            <input type="text" name="last-name" placeholder="Last Name">
+                            <input type="text" name="username" placeholder="Username">
+                            <input type="email"  name="email" placeholder="something@gmail.com">
+                            <input type="password" name="password1" placeholder="password">
+                            <input type="password" name="password2"placeholder="Confirm password">
+                            <input type="submit" class="submit-btn" value="Sign up">
+                        </form>
+                        <div>
+                            {% if messages %}
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                                <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/css/toastr.min.css">
+                                <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/js/toastr.min.js"></script>
+                                {% for mes in messages %}
+                                        {% if "successfully" in mes.message%}
+                                        <script>toastr.success("{{ mes.message }}")</script>
+                                            {% elif "already" in mes.message%}
+                                        <script>toastr.error("{{ mes.message }}")</script>
+                                            {% elif "password" in mes.message%}
+                                        <script>toastr.error("{{ mes.message }}")</script>
+                                    {% endif %}
+                                {% endfor %}
+                            {% endif %}
+                        </div>
+                        <!--<div class="bottom-text" style="padding-bottom:25px; font-size:14px;">
+                            <input type="checkbox" name="agree" checked="checked">I agree all the terms & conditions.
+                        </div>-->
+                        <div class="hav-acc">
+                            <p class="text-center text-justify"> have account already?<a href="login">Login here</a></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-3"></div>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+      $(".txtb input").on("focus",function(){
+        $(this).addClass("focus");
+      });
+
+      $(".txtb input").on("blur",function(){
+        if($(this).val() == "")
+        $(this).removeClass("focus");
+      });
+
+      </script>
+</body>
+</html>

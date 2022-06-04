@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>destination</title>
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" type='text/css'>
+    <link rel="stylesheet" type="text/css" href="{% static 'travelapp/styles/destination.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'travelapp/styles/homepage.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+
+
+</head>
+<body>
+<header class="header">
+        <nav class="main-nav navbar-expand-lg navbar-light sticky-top" style="background:purple;">
+            <div class="container main-nav-con">
+                <div class="row">
+                    <div class="col main-nav-col d-flex flex-row align-items-center justify-content-start">
+                        <div class="logo-container">
+                            <div class="logo"><a href="#"><img src="{% static 'travelapp/images/projectlogo.png' %}" height="90px" width="77px" ></a>
+                            </div>
+                        </div>
+                        <div class="main-nav-container ml-auto">
+                            <ul class="main-nav-list">
+                                   <li class="main-nav-item"><a href="/">HOME</a></li>
+                                    <li class="main-nav-item"><a href="destination">DESTINATION</a></li>
+                                {% if user.is_authenticated %}
+                                    <li class="main-nav-item"><a href="/accounts/logout">SIGN OUT</a></li>
+                                {% else %}
+                                    <li class="main-nav-item"><a href="accounts/login">SIGN IN</a></li>
+                                    <li class="main-nav-item"><a href="accounts/register">REGISTER</a></li>
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+<section class="destination-background" >
+    <section style="padding-bottom:50px;">
+    <div class="dest-head-head">
+        <h1 class="dest-head"><span>Keep Travelling</span></h1>
+    </div>
+    </section>
+    <div>
+        <div class="container">
+        <div class="row">
+            <div class="column dest-para-block text-left">
+                <h2 style="font-size:35px">Discover places near you</h2>
+                <p style="font-size:15px">This is the best site discover your city.Create a Trip to save and organize all of your travel ideas, and see them on a map</p>
+            </div>
+            <div class="column">
+                <div>
+                    <div class="image-box">
+                        <img src="{% static 'travelapp/images/map.png' %}" width="560px">
+                    </div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+    <section class="recommended-dest">
+        <div class="container countents">
+                <div class="recommendation-container" >
+                    <div class="row" >
+                        {% if recommend %}
+
+                        {%for place,cord in recommend.items %}
+
+                        <div class="col-lg-3 col-sm-6">
+                        <div class="popular-places-img-container">
+                            <img src="{% static 'travelapp/images/places/'|add:place|add:'.jpg' %}" width="250px" height="300px">
+                            <div class="image-tittle center text-center" >
+                                {{place}}
+                            </div>
+                        </div>
+                        </div>
+                      <div class="col-lg-3 col-sm-6">
+                        <div class="popular-places-description-box">
+                            <div class="price"> {{ifprice}}</div>
+                            <div class="rating-popular-places">
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star"></i>
+                                <i class="fa fa-star-half-o"></i>
+                            </div>
+                            <div class="popular-places-description">
+                                {%if desc %}
+                                {% for k,v in desc.items%}
+                                    {%if k == place %}
+                                <p class=" text-left text-justify"  style="color:#b3b3b3">{{v}}</p>
+                                {%endif%}
+                                {%endfor%}
+                                {% endif%}
+                            </div>
+                             <div class="popular-places-icon">
+                                 <i class="fa fa-bicycle"></i>
+                                 <i class="fa fa-tree"></i>
+                                 <i class="fa fa-map-signs"></i>
+                                 <i class="fa fa-compass"></i>
+                            </div>
+                            <div class="find-more-btn" style=" font-weight: bold;"><a href="https://www.google.com/search?q={{place}}" role="button">EXPLORE</a></div>
+                        </div>
+                    </div>
+
+                        {%endfor%}
+
+                        {%endif%}
+<!--                        <div class="col-lg-4 col-md-6">-->
+<!--                            <div class="recommendation-img-box">-->
+<!--                                <div class="recommendation-img-container">-->
+<!--                                    <img src="{% static 'travelapp/images/shey.jpg' %}" width="350px" height="280px">-->
+<!--                                </div>-->
+<!--                                <div class="content">-->
+<!--                                    <p class="d-flex align-items-center">Phoksundo &lt;!&ndash;<a href="travel_destination.html"> 03 Places</a>&ndash;&gt;</p>-->
+<!--                                 </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-md-6">-->
+<!--                            <div class="recommendation-img-box">-->
+<!--                                <div class="recommendation-img-container">-->
+<!--                                    <img src="{% static 'travelapp/images/vacation.jpg' %}" width="350px" height="280px">-->
+<!--                                </div>-->
+<!--                                <div class="content">-->
+<!--                                    <p class="d-flex align-items-center">Chitwan&lt;!&ndash;<a href="travel_destination.html"> 03 Places</a> &ndash;&gt; </p>-->
+<!--                                 </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+<!--                    <div class="recommendation-dis-row"></div>-->
+<!--                    <div class="row">-->
+<!--                        <div class="col-lg-4 col-md-6">-->
+<!--                            <div class="recommendation-img-box">-->
+<!--                                <div class="recommendation-img-container">-->
+<!--                                    <img src="{% static 'travelapp/images/lakeside.jpg' %}" width="350px" height="280px">-->
+<!--                                </div>-->
+<!--                                <div class="content">-->
+<!--                                    <p class="d-flex align-items-center">Pokhara&lt;!&ndash;<a href="travel_destination.html"> 03 Places</a>&ndash;&gt; </p>-->
+<!--                                 </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-md-6">-->
+<!--                            <div class="recommendation-img-box">-->
+<!--                                <div class="recommendation-img-container">-->
+<!--                                    <img src="{% static 'travelapp/images/rara.jpg' %}" width="350px" height="280px">-->
+<!--                                </div>-->
+<!--                                <div class="content">-->
+<!--                                    <p class="d-flex align-items-center">Dharchula&lt;!&ndash;<a href="travel_destination.html"> 03 Places</a>&ndash;&gt; </p>-->
+<!--                                 </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                        <div class="col-lg-4 col-md-6">-->
+<!--                            <div class="recommendation-img-box">-->
+<!--                                <div class="recommendation-img-container">-->
+<!--                                    <img src="{% static 'travelapp/images/lumbini.jpg' %}" width="350px" height="280px">-->
+<!--                                </div>-->
+<!--                                <div class="content">-->
+<!--                                    <p class="d-flex align-items-center">Lumbini&lt;!&ndash;<a href="travel_destination.html"> 03 Places</a>&ndash;&gt; </p>-->
+<!--                                 </div>-->
+<!--                            </div>-->
+<!--                        </div>-->
+<!--                    </div>-->
+                    </div>
+                </div>
+        </div>
+    </section>
+<section class="footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3">
+                    <div class="ghumgham-logo">
+                        <img src="{% static 'travelapp/images/projectlogo.png' %}" height="100px" width="100px">
+                    </div>
+                    <div class="footer-description">
+                        <p> Nepal, officially the Federal Democratic Republic of Nepal,  is a country in South Asia. It is located mainly in the Himalayas, but also includes
+                            parts of the Indo-Gangetic Plain.
+                            It is the 49th largest country by population and 93rd largest country by area.
+                        </p>
+                    </div>
+                    <div class="social-info">
+                        <ul class="footer-social-list">
+                            <li class="social-info-list-item"><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                            <li class="social-info-list-item"><a href="#"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                            <li class="social-info-list-item"><a href="#"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                            <li class="social-info-list-item"><a href="#"><i class="fa fa-linkedin" aria-hidden="true"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="second-col-tittle">
+                        <h3>DESTINATIONS</h3>
+                    </div>
+                    <div>
+                        <div class="row row-padding">
+                            <div class="col">Pokhara</div>
+                            <div class="col">Dharan</div>
+                        </div>
+                        <div class="row row-padding">
+                            <div class="col">Bardiya</div>
+                            <div class="col">Everest region</div>
+                        </div>
+                        <div class="row row-padding">
+                            <div class="col">Manang</div>
+                            <div class="col">Dharchula</div>
+                        </div>
+                        <div class="row row-padding">
+                            <div class="col">Chitwan</div>
+                            <div class="col">Helambu</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="third-col-tittle">
+                        <h3>TAGS</h3>
+                    </div>
+                    <div>
+                        <div class="row row-padding">
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">adventure</a></button></div>
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">Trekking</a></button></div>
+                        </div>
+                        <div class="row row-padding">
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">Vacation</a></button></div>
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">Party</a></button></div>
+                        </div>
+                        <div class="row row-padding">
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">Edu.Tour</a></button></div>
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">History</a></button></div>
+                        </div>
+                        <div class="row row-padding">
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">Photography</a></button></div>
+                            <div class="col footer-tag-item"><button class="fbtn"><a href="">Culture</a></button></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-3">
+                    <div class="fourth-col-tittle">
+                        <h3>CONTACT INFO</h3>
+                    </div>
+                    <div class="contact-info">
+                        <ul class="footer-contact-list">
+                            <li class="contact-info-item d-flex flex-row">
+                                <div class="contact-info-icon">
+                                    <i class="fa fa-location-arrow" aria-hidden="true" style="padding-right:20px;"></i>   Ghumgham,Boudha
+                                </div>
+                            </li>
+                            <li class="contact-info-item d-flex flex-row">
+                                <div class="contact-info-icon">
+                                    <i class="fa fa-phone" aria-hidden="true" style="padding-right:20px;"></i>   +977-454-434-2345
+                                </div>
+                            </li>
+                            <li class="contact-info-item d-flex flex-row">
+                                <div class="contact-info-icon">
+                                    <i class="fa fa-envelope" aria-hidden="true" style="padding-right:20px;"></i>
+                                </div>
+                                <div class="link-class-web">
+                                    <a href="#" class="link-class">ghumgham567@gmail.com</a>
+                                </div>
+                            </li>
+                            <li class="contact-info-item d-flex flex-row">
+                                <div class="contact-info-icon">
+                                    <i class="fa fa-globe" aria-hidden="true" style="padding-right:20px;"></i>
+                                </div>
+                                <div class="link-class-web">
+                                    <a href="#" class="link-class">www.ghumgham567.com</a>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
+</body>
+</html>

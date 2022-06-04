@@ -1,0 +1,986 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" dir="ltr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Travel recommendation</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'travelapp/styles/homepage.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <!-- fontawesome cdn -->
+    <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css"
+        integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"
+        integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+        crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"
+        integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+        crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+        integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+        crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
+
+    <!-- font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cedarville+Cursive&family=Gideon+Roman&display=swap"
+        rel="stylesheet">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Gideon+Roman&display=swap');
+
+        a {
+            text-decoration: none;
+        }
+    </style>
+
+</head>
+
+<!-- <body>linear-gradient(45deg, rgb(241, 217, 209) 0%, rgb(40, 106, 192) 70%); -->
+<div class="super-container">
+    {% block content %}
+    <header class="header">
+        <nav class="main-nav navbar-expand-lg navbar-light sticky-top" style="background:transparent">
+            <div class="container main-nav-con">
+                <div class="row">
+                    <div class="col main-nav-col d-flex flex-row align-items-center justify-content-start">
+                        <div class="logo-container">
+                            <div class="logo"><a href="#"><img src="{% static 'travelapp\images\lo.png' %}"
+                                        height="90px" width="180px"></a>
+                            </div>
+                        </div>
+                        <div style="display: flex; justify-content: center; align-items: center;  top: 50% ;">
+                            <section class="search">
+                                <div class="search-banner" id="search">
+                                    <div>
+                                        <form method="GET" action="travelapp/search">
+
+                                            <div class="form-box"
+                                                style="display: flex; width:600px; justify-content: center; align-items: center;">
+                                                <!-- input -->
+                                                <input class="search-field destination border border-dark" name="search"
+                                                    type="text" id="search" placeholder="where to go?"
+                                                    style="background-color: #E5E5E5;border-radius: 20px; width: 400px;height:40px;">
+                                                <!-- submit button -->
+                                                <button type="submit"
+                                                    style="width:90px;text-decoration: solid; font-weight: bold; color: black; height:40px; border: 0ch; "
+                                                    class="search_btn border border-dark">
+                                                    <img src="media\images\search.png" alt=""
+                                                        style="height: 20px; width: 20px;">
+                                                </button>
+                                                <!-- location icon -->
+                                                <style>
+                                                    .search_btn {
+                                                        background-color: transparent;
+                                                        border-radius: 12px;
+
+                                                    }
+
+                                                    .search_btn:hover {
+                                                        background-color: rgb(8, 119, 32);
+                                                    }
+                                                </style>
+                                                <!-- start of location button on click -->
+                                                <h4>
+                                                    <a href="" onclick="getLocation();visibility()"
+                                                        data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                        style=" margin-left: 10px; text-decoration: solid; font-weight: bold;">
+                                                        <img src="media\images\a.png" alt=""
+                                                            style="width:40px;height:60px">
+                                                    </a>
+                                                </h4>
+                                            </div>
+                                        </form>
+
+
+
+
+
+
+                                        <!-- new -->
+
+                                        <!-- Button trigger modal -->
+
+                                        <div class="modal fade" id="exampleModal" tabindex="-1"
+                                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                            <div class="modal-dialog">
+                                                <div class="modal-content">
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" id="exampleModalLabel">RELOADING
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                            aria-label="Close"></button>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p id="demo"></p>
+                                                    </div>
+                                                    <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary"
+                                                            data-bs-dismiss="modal"
+                                                            onclick="document.getElementById('btn_location').style.visibility='visible'">Close</button>
+                                                        <button type="button" class="btn btn-primary"
+                                                            onclick="document.getElementById('btn_submit').click()">NEAR
+                                                            ME</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <!-- new -->
+
+
+
+                                    </div>
+
+                                </div>
+                            </section>
+                        </div>
+                        <div class="main-nav-container ml-auto">
+                            <ul class="main-nav-list" style="list-style: none;display: flex;">
+                                <li class="main-nav-item"><a href="/" class="nav-link fs-3 " style="font-family: Rubik;
+                                    font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 18px;
+                                    line-height: 21px;color: #000000;">home</a>
+                                </li>
+
+                                <li class="main-nav-item"><a href="#slideshow" class="nav-link fs-3 " style="font-family: Rubik;
+                                    font-style: normal;
+                                    font-weight: bold;
+                                    font-size: 18px;
+                                    line-height: 21px;color: #000000;">categories</a></li>
+
+                                <li class="main-nav-item" style="color: rgb(255, 255, 255);"><a href="#gallery"
+                                        class="nav-link fs-3 " style="font-family: Rubik;
+                                        font-style: normal;
+                                        font-weight: bold;
+                                        font-size: 18px;
+                                        line-height: 21px;color: #000000;">gallery</a></li>
+
+                                <!-- <li class="main-nav-item"><a href="#contact"
+                                            class="nav-link fs-3 "style="color: black;">Contact</a></li> -->
+
+                                <!-- {% if user.is_authenticated %}
+
+                                    <li class="main-nav-item"><a href="accounts/logout" class=" fs-3 t">Sign
+                                            Out</a></li>
+                                    {% else %}
+                                    <li class="main-nav-item"><a href="accounts/login" class=" fs-3  ">Sign
+                                            in</a></li>
+                                    <li class="main-nav-item"><a href="accounts/register"
+                                            class=" fs-3 ">Register</a>
+                                    </li> -->
+
+
+                                {% endif %}
+
+                            </ul>
+
+                        </div>
+
+                    </div>
+                    <!-- <hr class="mt-2 mb-5 ml-5"> -->
+                </div>
+            </div>
+        </nav>
+    </header>
+</div>
+{% endblock %}
+
+
+
+
+<section class="banner">
+    <!-- <video autoplay muted loop>
+        <source src="media\video.jpg">
+    </video> -->
+
+    <img src="../../../media/video.jpg" alt="" style="width: 100%;">
+    <!-- video added -->
+
+    <h2 style="font-weight: bolder; font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">NEPAL
+    </h2>
+
+
+
+</section>
+<br><br><br><br><br>
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+
+    .banner {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100%;
+        height: 100vh;
+        overflow: hidden;
+
+
+    }
+
+    .banner video {
+        position: absolute;
+        background-position: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+
+
+    }
+
+    .banner h2 {
+
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        /* height: 0%; */
+        background-image: url('./media/images/whitecloud.jpg');
+        /* background-clip: border-box; */
+        background-size: cover;
+        background-repeat: no-repeat;
+        /* background-attachment: fixed;  */
+        background-color: azure;
+
+
+        font-size: 30vw;
+        text-align: center;
+        text-transform: uppercase;
+        color: #000;
+        /* color:white; */
+        line-height: 100vh;
+        mix-blend-mode: screen;
+
+    }
+</style>
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- location starts -->
+
+<section style="align-items: center; display: flex; flex-direction: column; justify-content: center;  ">
+    <button id="btn_location" onclick="getLocation()" class=" btn-success text-center" data-bs-toggle="modal"
+        data-bs-target="#exampleModal" style="visibility:hidden">
+
+    </button>
+
+    <!-- <p id="demo"></p> -->
+    <form method="GET" action="travelapp/yourlocation">
+        <input type="text" name="latitude" id="lati" hidden="true">
+        <input type="text" name="longitude" id="longi" hidden="true">
+        <button id="btn_submit" type="submit" style="visibility: hidden;">
+
+        </button>
+    </form>
+
+
+</section>
+<!-- location ends -->
+
+
+
+
+
+<!-- new -->
+
+<!-- Button trigger modal -->
+
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Reloading</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <p id="demo"></p>
+            </div>
+
+
+
+        </div>
+    </div>
+</div>
+
+<!-- new -->
+
+
+
+
+<!-- search section ends -->
+
+
+
+
+<!-- location script starts -->
+<script src="https://code.jquery.com/jquery-2.2.4.min.js">
+
+</script>
+<script>
+
+    var x = document.getElementById("demo");
+    function getLocation() {
+
+
+
+        if (navigator.geolocation) {
+            navigator.geolocation.getCurrentPosition(showPosition);
+
+        } else {
+            x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+
+        function myfunc() {
+            document.getElementById('btn_submit').click()
+        }
+        var delay = 5000;
+        setTimeout(myfunc, delay)
+
+
+
+    }
+
+    function showPosition(position) {
+
+        x.innerHTML = " <br>Your current location is <br> Latitude: " + position.coords.latitude + "<br>Longitude: " + position.coords.longitude;
+        document.getElementById('lati').value = `${position.coords.latitude}`
+        document.getElementById('longi').value = `${position.coords.longitude}`
+    }
+
+</script>
+<!-- location script ends -->
+
+
+<section class="p-3 bg-teal text-white text-center" style="margin-top:580px;" id="social">
+    <div class="container">
+        <div class="row">
+
+</section>
+
+
+
+<!-- categories starts -->
+<br>
+<br>
+
+<section class="categories">
+    <h1 class="text-center text-lg-start mt-5 mb-0 ml-5 text-light font-weight-bold">Categories</h1>
+
+    <hr class="mt-2 mb-5 ml-5 text-light">
+
+    <section class="slideshow" id="slideshow">
+
+        <div class="content">
+
+            <div class="carasoul ">
+                <figure class="shadow border border-light border-5">
+                    <a href="http://127.0.0.1:8000/travelapp/search?search=Bhaktapur Durbar Square"><img
+                            src="media\images\Bhaktapur Durbar Square.jpg" class="text-warning">Heritage sites</a>
+                </figure>
+
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=Royal Empire Boutique Hotel"><img
+                            src="media\images\Royal Empire Boutique Hotel.jpg">Hotels/Homestays</a></figure>
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=National museum"><img
+                            src="media\images\Nationalmuseum.jpg">Museum</a></figure>
+
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=boudha"><img
+                            src="media\images\Boudhanath Temple.jpg">Gumbas</a></figure>
+
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=Pashupatinath"><img
+                            src="media\images\Pashupatinath Temple.jpg">Religious/Cultural</a></figure>
+
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=garden of dreams"><img
+                            src="media\images\Garden Of Dreams.jpeg">Parks and Gardens</a></figure>
+
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=siddhapokhari"><img
+                            src="media\images\Siddhapokhari.jpg">water bodies</a></figure>
+
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=labim mall"><img
+                            src="media\images\Labim Mall.jpg">Shopping malls</a></figure>
+
+                <figure class="shadow border border-light border-5"><a
+                        href="http://127.0.0.1:8000/travelapp/search?search=nagarkot"><img
+                            src="media\images\Nagarkot.jpg" class="text-warning">Hillstations</a></figure>
+
+
+
+            </div>
+        </div>
+    </section>
+</section>
+<style>
+    .categories {
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-image: url('./media/images/map.jpg');
+        background-color: 000;
+        background-size: auto;
+
+
+    }
+
+    /* .categories {
+        margin-top: 10vh;
+    } */
+</style>
+<br><br>
+
+
+<h1 class=" text-center text-lg-start mt-4 mb-0 ml-5 font-weight-bold">Popular destinations</h1>
+
+<hr class="mt-2 mb-5 ml-5">
+<style>
+    * {
+        margin: 0;
+        padding: 0;
+
+    }
+
+    a {
+        text-decoration: none;
+        color: rgb(243, 236, 219);
+        font-size: large;
+        text-align: center;
+    }
+
+    .slideshow {
+
+        background-repeat: no-repeat;
+        margin: 0 auto;
+        width: 100%;
+        height: 50vh;
+        padding-top: 20px;
+        /* background: linear-gradient(45deg, rgb(241, 217, 209) 0%, rgb(233, 198, 2) 70%); */
+
+
+
+
+    }
+
+    .content {
+        margin: auto;
+        width: 200px;
+        perspective: 1500px;
+        padding-top: 1px;
+    }
+
+    .carasoul {
+        width: 100%;
+        animation: rotar 30s infinite linear;
+        transform-style: preserve-3d;
+
+    }
+
+    .carasoul:hover {
+        cursor: pointer;
+        animation-play-state: paused;
+    }
+
+    .carasoul figure {
+        width: 100%;
+        height: 200px;
+        position: absolute;
+    }
+
+    .carasoul figure:nth-child(1) {
+        transform: rotateY(0deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(2) {
+        transform: rotateY(40deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(3) {
+        transform: rotateY(80deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(4) {
+        transform: rotateY(120deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(5) {
+        transform: rotateY(160deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(6) {
+        transform: rotateY(200deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(7) {
+        transform: rotateY(240deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(8) {
+        transform: rotateY(280deg) translateZ(300px);
+    }
+
+    .carasoul figure:nth-child(9) {
+        transform: rotateY(320deg) translateZ(300px);
+    }
+
+    .carasoul img {
+        image-rendering: auto;
+        transition: all 300ms;
+        width: 100%;
+        height: 100%;
+    }
+
+    .carasoul img:hover {
+        transform: scale(1.2);
+        transition: all 300ms;
+        border: 1px solid;
+        border-radius: 5px;
+
+    }
+
+    .shadow {
+        box-shadow: 0px 0px 20px 0px #000;
+        border-radius: 5px;
+    }
+
+    @keyframes rotar {
+        from {
+            transform: rotateY(0deg);
+        }
+
+        to {
+            transform: rotateY(360deg)
+        }
+    }
+</style>
+
+
+
+
+<!-- categories ends -->
+
+
+
+<!-- Popular Places -->
+<section id="places" class="p-3" style="background-image: url('./media/images/white.jpg');">
+    <div class="container">
+        <!-- <div class="row text-center">
+            <div class="col">
+                <h5 class="display-4">
+                    <span class="text-teal">Some Popular Destination</span>
+                </h5>
+
+            </div>
+        </div> -->
+        <div class="row">
+
+            <div class="col-md-4">
+                <div class="card mt-3 border border-3">
+                    <img src="media\images\Kathmandu Durbar Square.jpeg" class="img-fluid" alt=""
+                        style="height: 300px;width: 700px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Kathmandu Durbar Square</h3>
+                        <p class="card-text">A UNESCO World Heritage Site, is one of three squares within
+                            Kathmandu
+                            Valley in Nepal. Durbar Square (durbar translates to “palace” or “a court held by a
+                            prince”) is an important site for Buddhist and Hindu rituals, holy ceremonies, royal
+                            events, and kingly coronations.
+                        </p><br><br>
+                        <button class="btn btn-teal btn-sm"><a
+                                href="http://127.0.0.1:8000/travelapp/search?search=Kathmandu Durbar Square">Read
+                                More</a></button>
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="col-md-4">
+                <div class="card mt-3 border border-3">
+                    <img src="media\images\patan.jpg" class="img-fluid " alt="" style="height: 300px;width: 700px;">
+
+                    <div class="card-body">
+                        <h3 class="card-title">Lalitpur Durbar Square</h3>
+                        <p class="card-text">Patan, the oldest of all the three cities of Kathmandu valley. It is the
+                            best known for its artistic heritage. It is probably one of the oldest Buddhist City in the
+                            world. The city is situated on a plateau across Bagmati River. Another name of Patan, is
+                            lalitpur. </p><br><br>
+                        <button class="btn btn-teal btn-sm"><a
+                                href="http://127.0.0.1:8000/travelapp/search?search=Patan Durbar Square">Read
+                                More</a></button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4">
+                <div class="card mt-3 border border-3">
+                    <img src="media\images\Bhaktapur Durbar Square.jpg" class="img-fluid" alt=""
+                        style="height: 300px;width: 700px;">
+                    <div class="card-body">
+                        <h3 class="card-title">Bhaktapur Durbar Square</h3>
+                        <p class="card-text">Bhaktapur, the city is also known, is a museum of medieval art and
+                            architecture with many examples of sculpture, woodcarving and colossal pagoda temples
+                            consecrated to different gods and goddesses which is 15 km far from Kathmandu. It is one of
+                            the oldest cities of nepal.</p>
+                        <br>
+                        <button class="btn btn-teal btn-sm"><a
+                                href="http://127.0.0.1:8000/travelapp/search?search=Bhaktapur Durbar Square">Read
+                                More</a></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</section>
+<!-- end of popular places -->
+
+
+
+
+
+
+<!-- Social Icons starts-->
+<script src="https://kit.fontawesome.com/yourcode.js" crossorigin="anonymous"></script>
+<section class="p-3 bg-teal text-white text-center"
+    style="background:linear-gradient(45deg, rgb(241, 217, 209) 0%, rgb(40, 106, 192) 70%);" id="social">
+    <div class="container">
+        <div class="row">
+            <div class="col-team">
+                <h1>Follow our team</h1>
+
+                <a href="#" style="color: black; margin: 5px;"><i class="fab fa-facebook"></i></a>
+                <a href="#" style="color: black; margin: 5px;"><i class="fab fa-youtube"></i></a>
+                <a href="#" style="color: black; margin: 5px;"><i class="fab fa-twitter"></i></a>
+                <a href="#" style="color: black; margin: 5px;"><i class="fab fa-google-plus"></i></a>
+            </div>
+        </div>
+    </div>
+
+</section> <br><br><br>
+<style>
+    #social .container .row .col-team i {
+        font-size: x-large;
+
+    }
+</style>
+<!-- social icon ends -->
+
+
+
+
+<!-- gallery section starts -->
+<div class="container">
+
+    <h1 class="text-center text-lg-start mt-4 mb-0 font-weight-bold">Gallery</h1>
+
+    <hr class="mt-2 mb-5">
+
+    <div class="row text-center text-lg-start">
+
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Pashupatinath.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\patan.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Whoopee land amusement park.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Trisara.png" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\USembassy.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Swayambhunath.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\The last resort.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Thamel Market.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Taudaha.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Narayanhiti palace museum.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Sukutebeach.jpg" alt="">
+            </a>
+        </div>
+        <div class="col-lg-3 col-md-4 col-6">
+            <a href="#" class="d-block mb-4 h-100">
+                <img class="img-fluid img-thumbnail" src="media\images\Pilot Baba Ashram.jpg" alt="">
+            </a>
+        </div>
+    </div>
+
+</div>
+
+<!-- gallery ends -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- Gallery Section starts-->
+<!-- <section id="gallery" class="p-3"style="background-image: url('./media/images/map.jpg');">
+    <div class="container">
+        <div class="row text-center">
+            <div class="col">
+                <h5 class="display-4">
+                    <span class="text-teal"
+                        style="font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;">Photo
+                        Gallery</span>
+                </h5>
+
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3">
+                <img src="media\images\Pashupatinath Temple.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\patan.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Whoopee land amusement park.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Trisara.png" class="img-fluid" alt="">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <img src="media\images\USembassy.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Swayambhunath.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\The last resort.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Thamel Market.jpg" class="img-fluid" alt="">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <img src="media\images\Taudaha.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Narayanhiti palace museum.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Nilbarahi.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Sukutebeach.jpg" class="img-fluid" alt="">
+            </div>
+        </div>
+        <div class="row mt-4">
+            <div class="col-md-3">
+                <img src="media\images\shey.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Pilot Baba Ashram.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Shankhadhar Park.jpg" class="img-fluid" alt="">
+            </div>
+            <div class="col-md-3">
+                <img src="media\images\Purple Haze RockBar.png" class="img-fluid" alt="">
+            </div>
+        </div>
+    </div>
+</section>
+<br><br><br> -->
+
+<style>
+    .col-md-8 {
+        margin-left: 18%;
+    }
+
+    h3 {
+
+        color: darkblue;
+        font-size: large;
+    }
+</style>
+<!-- gallery section ends -->
+
+
+
+
+
+
+
+
+<!-- Bootstrap Js files -->
+<script src="bootstrap/js/jquery.js"></script>
+<script src="bootstrap/js/popper.min.js"></script>
+<script src="bootstrap/js/bootstrap.js"></script>
+<script src="bootstrap/js/mdb.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+    crossorigin="anonymous"></script>
+
+
+<!-- <script>
+        $('.carousel').carousel({
+            interval: 3000,
+            pause: 'hover'
+        });
+    </script> -->
+
+
+<!-- footer starts -->
+<section class="footer" style="background:linear-gradient(45deg, rgb(241, 217, 209) 0%, rgb(40, 106, 192) 70%); ">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="project-logo">
+                    <div class="logo-container">
+                        <div class="logo"><a href="#"><img src="{% static 'travelapp/images/lo.png' %}" height="120px"
+                                    width="240px"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="social-info">
+                    <ul class="footer-social-list" style="display: flex;list-style: none;color: white;">
+                        <li class="social-info-list-item"><a href="#"><i class="fa fa-twitter"
+                                    aria-hidden="true"></i></a></li>
+                        <li class="social-info-list-item"><a href="#"><i class="fa fa-facebook"
+                                    aria-hidden="true"></i></a></li>
+                        <li class="social-info-list-item"><a href="#"><i class="fa fa-instagram"
+                                    aria-hidden="true"></i></a></li>
+                        <li class="social-info-list-item"><a href="#"><i class="fa fa-linkedin"
+                                    aria-hidden="true"></i></a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="col-lg-6">
+                <div class="fourth-col-title">
+                    <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Contact </h1>
+                    <hr class="mt-2 mb-3">
+                </div>
+
+                <div class="contact-info">
+                    <ul class="footer-contact-list">
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon" style="font-size:20px">
+                                <i class="fa fa-location-arrow" aria-hidden="true" style="padding-right:20px;"></i>
+                                Dhapakhel,Lalitpur
+                            </div>
+                        </li>
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon" style="font-size:20px">
+                                <i class="fa fa-phone" aria-hidden="true" style="padding-right:20px;"></i>
+                                +977-67436839
+                            </div>
+                        </li>
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon">
+                                <i class="fa fa-envelope" aria-hidden="true" style="padding-right:20px;"></i>
+                            </div>
+                            <div class="link-class-web">
+                                <a href="#" class="link-class">smarttraveller@gmail.com</a>
+                            </div>
+                        </li>
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon">
+                                <i class="fa fa-globe" aria-hidden="true" style="padding-right:20px;"></i>
+                            </div>
+                            <div class="link-class-web">
+                                <a href="#" class="link-class">www.Smarttraveller.com</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- footer ends -->
+
+
+
+
+</body>
+
+</html>

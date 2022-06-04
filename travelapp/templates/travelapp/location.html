@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>nearbyplaces</title>
+    <link rel="shortcut icon" href="">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css" href="{% static 'travelapp/styles/homepage.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.0.0/animate.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+</head>
+<body>
+    
+    <div class="super-container">
+        {% block content %}
+        <header class="header">
+            <nav class="main-nav navbar-expand-lg navbar-light sticky-top" style="background-color:transparent;">
+                <div class="container main-nav-con">
+                    <div class="row">
+                        <div class="col main-nav-col d-flex flex-row align-items-center justify-content-start">
+                            <div class="logo-container">
+                                <div class="logo"><a href="#"><img src="{% static 'travelapp/images/lo.png' %}"
+                                            height="90px" width="180px"></a>
+                                </div>
+                            </div>
+                            <!-- <div style="display: flex; justify-content: center; align-items: center;  top: 50% ;">
+                                <section class="search">
+                                    <div class="search-banner" id="search">
+                                        <div> -->
+                                            <!-- <form method="GET" action="travelapp/search">
+    
+                                                <div class="form-box"
+                                                    style="display: flex; width:600px; justify-content: center; align-items: center;"> -->
+    <!-- input -->
+                                                    <!-- <input class="search-field destination border border-dark" name="search"
+                                                        type="text" id="search" placeholder="where to go?" style="background-color: #E5E5E5;border-radius: 20px;"> -->
+    <!-- submit button -->
+                                                    <!-- <button type="submit"
+                                                        style="width: 25rem; background-color:transparent; text-decoration: solid; font-weight: bold; color: black; height:100px; border: 0ch; ">
+                                                        <img src="media\images\search.png" alt="" style="height: 43px; width: 60px;">
+                                                    </button> -->
+    <!-- location icon -->
+                                                    <!-- <h4> <a href="" onclick="getLocation();visibility()"
+                                                            data-bs-toggle="modal" data-bs-target="#exampleModal"
+                                                            style=" margin-left: 10px; text-decoration: solid; font-weight: bold;">
+                                                            <img src="media\images\icon.png" alt=""style="width: 51px;height:48px">
+                                                          </a></h4>
+                                                </div> -->
+                                            <!-- </form> -->
+    
+    
+    
+    
+    
+    
+                                            <!-- new -->
+    
+                                            <!-- Button trigger modal -->
+    
+                                            <!-- <div class="modal fade" id="exampleModal" tabindex="-1"
+                                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal-dialog">
+                                                    <div class="modal-content">
+                                                        <div class="modal-header">
+                                                            <h5 class="modal-title" id="exampleModalLabel">RELOADING
+                                                            </h5>
+                                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                                aria-label="Close"></button>
+                                                        </div>
+                                                        <div class="modal-body">
+                                                            <p id="demo"></p>
+                                                        </div>
+                                                        <div class="modal-footer">
+                                                            <button type="button" class="btn btn-secondary"
+                                                                data-bs-dismiss="modal"
+                                                                onclick="document.getElementById('btn_location').style.visibility='visible'">Close</button>
+                                                            <button type="button" class="btn btn-primary"
+                                                                onclick="document.getElementById('btn_submit').click()">NEAR
+                                                                ME</button>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div> -->
+    
+                                            <!-- new -->
+    
+    
+    
+                                        <!-- </div>
+    
+                                    </div>
+                                </section>
+                            </div> -->
+                            <div class="main-nav-container ml-auto">
+                                <ul class="main-nav-list"style="list-style: none;">
+                                    <li class="main-nav-item"><a href="/"
+                                    style="font-family: Rubik;
+                                        font-style: normal;
+                                        font-weight: bold;
+                                        font-size: 24px;
+                                        line-height: 21px;color: #0c90e9;width: 60px;height: 35px;">Return to home</a>
+                                    </li>
+    
+                                    <!-- <li class="main-nav-item"><a href="#slideshow" class="nav-link fs-3 "
+                                        style="font-family: Rubik;
+                                        font-style: normal;
+                                        font-weight: bold;
+                                        font-size: 18px;
+                                        line-height: 21px;color: #000000;">categories</a></li> -->
+    
+                                    <!-- <li class="main-nav-item" style="color: rgb(255, 255, 255);"><a href="#gallery"
+                                            class="nav-link fs-3 " style="font-family: Rubik;
+                                            font-style: normal;
+                                            font-weight: bold;
+                                            font-size: 18px;
+                                            line-height: 21px;color: #000000;">gallery</a></li> -->
+                                    <!-- <li class="main-nav-item"><a href="#contact"
+                                                class="nav-link fs-3 "style="color: black;">Contact</a></li> -->
+    
+                                    <!-- {% if user.is_authenticated %}
+    
+                                        <li class="main-nav-item"><a href="accounts/logout" class=" fs-3 t">Sign
+                                                Out</a></li>
+                                        {% else %}
+                                        <li class="main-nav-item"><a href="accounts/login" class=" fs-3  ">Sign
+                                                in</a></li>
+                                        <li class="main-nav-item"><a href="accounts/register"
+                                                class=" fs-3 ">Register</a>
+                                        </li> -->
+    
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        </header>
+    </div>
+    {% endblock %}
+
+
+<section class="container search-text-style" style="padding-top:150px;">
+    <div class="row">
+        <div class="col">
+            {% for place in places %}
+            {{place}}
+                <div class="row">
+                    <div class="col">
+                        <img src="http://127.0.0.1:8000/media/{{ place.img }} " class="img-fluid">
+                    </div>
+                    <div class="col">
+                        <h2 style="color:rgb(14, 176, 216);">{{ place.name }}</h2>
+                        <!-- <div class="rating-popular-places">
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star"></i>
+                            <i class="fa fa-star-half-o"></i>
+                            <i><a href="" style="color:black;">578 reviews</a></i>
+                        </div> -->
+                        {%if desc %}
+                                {% for k,v in desc.items%}
+                                    {%if k == place.name %}
+                                <p class=" text-left text-justify"  style="color:#b3b3b3">{{v}}</p>
+                                {%endif%}
+                                {%endfor%}
+                                {% endif%}
+                        <!-- <div class="popular-places-icon">
+                            <i class="fa fa-bicycle"></i>
+                            <i class="fa fa-tree"></i>
+                            <i class="fa fa-map-signs"></i>
+                            <i class="fa fa-compass"></i>
+                        </div> -->
+                    </div>
+                </div>
+            {% endfor %}
+            <hr style="border-top: 1px solid purple;">
+        </div>
+    </div>
+</section>
+
+
+
+
+<!-- footer starts -->
+<section class="footer" style="background:linear-gradient(45deg, rgb(241, 217, 209) 0%, rgb(40, 106, 192) 70%);color: white; ">
+    <div class="container ">
+        <div class="row">
+            <div class="col-lg-5">
+                <div class="project-logo">
+                    <div class="logo-container">
+                        <div class="logo"><a href="#"><img src="{% static 'travelapp/images/lo.png' %}" height="120px"
+                                    width="240px"></a>
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="social-info">
+                    <ul class="footer-social-list d-flex" style="list-style:none;">
+                        <li class="social-info-list-item p-3"><a href="#"><i class="fa fa-twitter"
+                                    aria-hidden="true" style="color: white;"></i></a></li>
+                        <li class="social-info-list-item p-3"><a href="#"><i class="fa fa-facebook"
+                                    aria-hidden="true" style="color: white;"></i></a></li>
+                        <li class="social-info-list-item p-3"><a href="#"><i class="fa fa-instagram"
+                                    aria-hidden="true" style="color: white;"></i></a></li>
+                        <li class="social-info-list-item p-3"><a href="#"><i class="fa fa-linkedin"
+                                    aria-hidden="true" style="color: white;"></i></a></li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="col-lg-6">
+                <div class="fourth-col-title">
+                    <h1 class="fw-light text-center text-lg-start mt-4 mb-0">Contact </h1>
+                     <hr class="mt-2 mb-3">
+                </div>
+
+                <div class="contact-info">
+                    <ul class="footer-contact-list">
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon"style="font-size:20px;">
+                                <i class="fa fa-location-arrow" aria-hidden="true" style="padding-right:20px;"  style="color: yellow;" ></i>
+                                Dhapakhel,Lalitpur
+                            </div>
+                        </li>
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon"style="font-size:20px">
+                                <i class="fa fa-phone" aria-hidden="true" style="padding-right:20px;"  style="color: yellow;" ></i>
+                                +977-67436839
+                            </div>
+                        </li>
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon">
+                                <i class="fa fa-envelope" aria-hidden="true" style="padding-right:20px;"></i>
+                            </div>
+                            <div class="link-class-web text">
+                                <a href="#" class="link-class"  style="color: yellow;" >smarttraveller@gmail.com</a>
+                            </div>
+                        </li>
+                        <li class="contact-info-item d-flex flex-row">
+                            <div class="contact-info-icon">
+                                <i class="fa fa-globe" aria-hidden="true" style="padding-right:20px;"></i>
+                            </div>
+                            <div class="link-class-web">
+                                <a href="#" class="link-class " style="color: yellow;" >www.Smarttraveller.com</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- footer ends -->
+</body>
+</html>
