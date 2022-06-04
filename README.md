@@ -1,1 +1,1 @@
-# smartTraveller
+# Smart Traveler is a final year project which is web based travel recommendation system. It uses data mining techniques like K-Nearest Neighbor and Apriori algorithm for recommending tourist destination places of Kathmandu valley to the users.
